@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<title>AcademyJEE</title>
+</head>
+<body>
+
+<div class="container">
+  <h2>Academy JEE</h2>
+  <p>I nostri corsi:</p>                  
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="active"><a href="#">Home</a></li>
+    <li><a th:href="@{'/aggiungi'}">Aggiungi Studente</a></li>       
+  </ul>
+</div>
+<br>
+
+<div class="container">
+  <h2>Lista Corsi</h2>
+  <p>Lista dei corsi disponibili</p>                        
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Nome Corso</th>
+        <th>Professore</th>
+        <th>Numero Studenti</th>
+        <th>Sede</th>
+        <th>Visualizza Studenti</th>
+      </tr>
+    </thead>
+    <tbody th:each="corso:${listaCorsi}">
+	    <td><p th:text="${corso.nome}"></p></td>
+	    <td><p th:text="${corso.professore}"></p></td>
+	    <td><p th:text="${corso.numeroStudenti}"></p></td>
+	    <td><p th:text="${corso.sede}"></p></td>
+	    <td><a th:href="@{'/visualizza/'+ ${corso.nome}}"><button type="button" class="btn btn-primary">Visualizza Studenti</button></a>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
