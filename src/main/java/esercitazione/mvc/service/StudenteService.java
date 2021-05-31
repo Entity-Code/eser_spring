@@ -28,6 +28,11 @@ public class StudenteService {
 		return studenteRepository.findByMatricola(matricola);
 	}
 	
+	public List<Studente> findStudenteByCorso(String nomeCorso) {
+		
+		return studenteRepository.findAllByCorso(nomeCorso);
+	}
+	
 	public List<Studente>allStudenti(){
 		List<Studente> list=new ArrayList<>();
 		studenteRepository.findAll().iterator().forEachRemaining(list::add);

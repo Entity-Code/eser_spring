@@ -15,17 +15,22 @@ import javax.persistence.Table;
 public class Corso {
 
 	@Id
+	@Column(name="nome")
 	private String nome;
+	
+	@Column(name="professore")
 	private String professore;
+	
 	@Column(name="numerostudenti")
 	private int numeroStudenti;
+	
+	@Column(name="sede")
 	private String sede;
 	
-	@OneToMany(mappedBy="corso",cascade = CascadeType.ALL)
-	List<Studente>lista=new ArrayList<Studente>();
+
+	List<Studente> lista=new ArrayList<Studente>();
 	
-	public Corso() {
-	}
+	public Corso() {}
 
 	public Corso(String nome, String professore, int numerostudenti, String sede) {
 		this.nome = nome;
@@ -73,4 +78,12 @@ public class Corso {
 	public void setLista(List<Studente> lista) {
 		this.lista = lista;
 	}
+
+	@Override
+	public String toString() {
+		return "Corso [nome=" + nome + ", professore=" + professore + ", numeroStudenti=" + numeroStudenti + ", sede="
+				+ sede + ", lista=" + lista + "]";
+	}
+	
+	
 }

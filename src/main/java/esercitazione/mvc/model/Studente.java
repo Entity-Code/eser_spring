@@ -2,6 +2,7 @@ package esercitazione.mvc.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,18 +19,27 @@ public class Studente {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
+	@Column(name="matricola")
 	private long matricola;
+	
+	@Column(name="nome")
 	private String nome;
+	
+	@Column(name="cognome")
 	private String cognome;
+	
+	@Column(name="email")
 	private String email;
+	
+	@Column(name="sesso")
 	private String sesso;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataNascita;
 	
-	@ManyToOne
-	@JoinColumn(name="corso_fk")
-	private Corso corso;
+
+	private String corso;
 	
 	public Studente() {
 	}
@@ -91,11 +101,18 @@ public class Studente {
 		this.dataNascita = dataNascita;
 	}
 
-	public Corso getCorso() {
+	public String getCorso() {
 		return corso;
 	}
 
-	public void setCorso(Corso corso) {
+	public void setCorso(String corso) {
 		this.corso = corso;
 	}
+	
+	@Override
+	public String toString() {
+		return "Studente [matricola=" + matricola + ", nome=" + nome + ", cognome=" + cognome + ", email=" + email
+				+ ", sesso=" + sesso + ", dataNascita=" + dataNascita + ", corso=" + corso + "]";
+	}
+
 }
