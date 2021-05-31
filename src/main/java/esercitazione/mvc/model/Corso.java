@@ -27,7 +27,7 @@ public class Corso {
 	@Column(name="sede")
 	private String sede;
 	
-
+	@OneToMany(mappedBy="corso",cascade = CascadeType.ALL)
 	List<Studente> lista=new ArrayList<Studente>();
 	
 	public Corso() {}

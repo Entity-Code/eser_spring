@@ -38,7 +38,8 @@ public class Studente {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataNascita;
 	
-
+	@ManyToOne
+	@JoinColumn(name="corso_fk")
 	private String corso;
 	
 	public Studente() {
